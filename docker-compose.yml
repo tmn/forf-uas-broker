@@ -1,0 +1,12 @@
+services:
+  faksbroker:
+    image: eclipse-mosquitto:2.0
+    container_name: faksbroker
+    restart: unless-stopped
+    ports:
+      - "1883:1883"    # MQTT
+      - "9001:9001"    # WebSocket
+    volumes:
+      - ./config:/mosquitto/config:ro
+      - ./data:/mosquitto/data
+      - ./log:/mosquitto/log
